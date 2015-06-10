@@ -1,17 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class UITime : MonoBehaviour {
+public class UIInvertCount : MonoBehaviour {
 
 	public UnityEngine.UI.Text text;
 	public UnityEngine.UI.Text text2;
-	
+
 	public Color black;
 	public Color white;
-
-	public void SetTime (float time)
+		
+	public void SetCount (float count)
 	{
-		text.text = time.ToString ("0.00s");
+		text.text = count.ToString ("0");
 	}
 
 	public void SetColour (string colour)

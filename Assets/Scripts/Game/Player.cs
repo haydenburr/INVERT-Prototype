@@ -6,12 +6,15 @@ public class Player : MonoBehaviour {
 	private GameController gameController;
 	public UIScoreMinus scoreMinus;
 
+	public AudioSource audioSource;
+	public AudioClip impact;
+
 	public SpriteRenderer spriteRenderer;	
 	public Sprite Black;
 	public Sprite White;
 	public string spriteColour;
 
-	private float gameoverTime = 2f;
+	private float gameoverTime = 1f;
 	private float gameoverTimer;
 	public bool hasBeenHit = false;
 
@@ -19,7 +22,6 @@ public class Player : MonoBehaviour {
 	public int maxInvertCount = 3;
 	public int invertCount;
 
-	//lower and upper collision detection
 	public Transform playerPosition;
 	
 	void Start ()
@@ -80,14 +82,12 @@ public class Player : MonoBehaviour {
 		rigidbody2D.velocity = new Vector2 (rigidbody2D.velocity.x, (rigidbody2D.velocity.y / 2));
 		rigidbody2D.gravityScale = -(rigidbody2D.gravityScale);
 
-		//change the sprites
 		gameController.Invert ();
 
-		//scoring
 		if (gameController.gameScore != 0 && invertCount != 3)
 		{
-			gameController.gameScore -= 1;
-			scoreMinus.Show ();
+			//gameController.gameScore -= 1;
+			//scoreMinus.Show ();
 		}
 
 		invertCount -= 1;
@@ -109,6 +109,8 @@ public class Player : MonoBehaviour {
 	{
 		if (hasBeenHit == false)
 		{
+			audioSource.PlayOneShot (impact);
+			rigidbody2D.gravityScale = 5;
 			gameoverTimer = gameoverTime;
 			hasBeenHit = true;
 		}

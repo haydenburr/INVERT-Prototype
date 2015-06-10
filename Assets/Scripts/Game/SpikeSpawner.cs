@@ -14,7 +14,7 @@ public class SpikeSpawner : MonoBehaviour {
 	private string tripleSpawn = "Triple";
 	private float spawnDelay;
 	private float startDelay;
-	public float startTimer = 3f;
+	public float startTimer = 2f;
 
 	void Start ()
 	{

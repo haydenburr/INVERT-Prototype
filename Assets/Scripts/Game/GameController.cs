@@ -8,10 +8,13 @@ public class GameController : MonoBehaviour {
 
 	//===================================================================
 
-	public UITime timer;
+	public UIInvertCount count;
 	public UIScore score;
+	public UITime time;
 	public UIGameOver gameOver;
 	public UIScorePlus scorePlus;
+
+	public Player player;
 
 	public float gameTime;
 	public int gameScore;
@@ -43,7 +46,8 @@ public class GameController : MonoBehaviour {
 			}
 			
 			gameTime += Time.deltaTime;
-			timer.SetTime (gameTime);
+			time.SetTime (gameTime);
+			count.SetCount (player.invertCount);
 			score.SetScore (gameScore);
 		}
 	}
@@ -52,10 +56,16 @@ public class GameController : MonoBehaviour {
 	{
 		if (currentColour == "Black")
 		{
+			time.SetColour (currentColour);
+			count.SetColour (currentColour);
+			score.SetColour (currentColour);
 			currentColour = "White";
 		}
 		else
 		{
+			time.SetColour (currentColour);
+			count.SetColour (currentColour);
+			score.SetColour (currentColour);
 			currentColour = "Black";
 		}
 	}
